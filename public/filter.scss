@@ -1,0 +1,150 @@
+.module_filter{
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin: 0 1em 1em 1em;
+    border: solid 1px $gris_lighter;
+    .item_filter{
+        padding: 1em;
+        width: 25%;
+        position: relative;
+        &.hidden{
+            display: none;
+        }
+        @include vertical-tablet-down {
+            width: 50%;
+        }
+        @include phablet-down {
+            width: 100%;
+        }
+        &.title-filter{
+            padding: 0;
+            width: 100%;
+        }
+        &.opc{
+            .cr-title{
+                margin-top: 1.3em;
+                margin-bottom: .1em;
+            }
+            .name-check,.name-radio{
+                margin-top: 1.6em;
+                float: left;
+                margin-right: 10px;
+            }
+            .checkbox,.radio{
+                margin-top: 1.3em;
+                float: left;
+                margin-right: 20px;
+            }
+        }
+    }
+    input,label,select{
+        display: block;
+       @include reset-appearance;
+    }
+    label{
+        margin-bottom: .3em;
+        color: $color_corporativo_dark;
+    }
+    select{
+        position:relative;
+        background-image: url(./image/down-arrow.png);
+        background-repeat: no-repeat;
+        background-size: 15px 15px;
+        background-position: 98% center;
+    }
+    input[type="text"],select, input[type="number"]{
+        border:solid 1px $gris;
+        padding: .5em .3em;
+        width: 100%;
+        background-color: $blanco;
+        &.module_filter_date{
+            background-image: url(./image/calendar.png);
+            background-repeat: no-repeat;
+            background-size: 15px 15px;
+            background-position: 98% center;
+        }
+        @include active-state{
+            border: solid 1px $ok;
+        }
+    }
+    input[type="checkbox"]:checked{
+        + .checkbox{
+            width: 28px;
+            height: 28px;
+            border: solid 1px $ok;
+            &:before{
+                content: "\f00c";
+                font-family: FontAwesome;
+                color: $ok;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 5px;
+                left: 5px;
+            }
+        }
+    }
+    input[type="checkbox"]{
+        display: none;
+        + .checkbox{
+            position: relative;
+            background: $blanco;
+            width: 28px;
+            height: 28px;
+            border: solid 1px $gris;
+        }
+    }
+
+    input[type="radio"]:checked{
+        + .radio{
+            width: 28px;
+            height: 28px;
+            border: solid 1px $ok;
+            &:before{
+                content: "\f00c";
+                font-family: FontAwesome;
+                color: $ok;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 5px;
+                left: 5px;
+            }
+        }
+    }
+    input[type="radio"]{
+        display: none;
+        + .radio{
+            position: relative;
+            width: 28px;
+            border-radius: 50%;
+            height: 28px;
+            border: solid 1px $gris;
+        }
+    }
+    input[type="button"],input[type="submit"]{
+        @include reset-appearance;
+        padding: .5em .3em;
+        width: 100%;
+        margin: 20px auto 0 auto;
+        color: $blanco;
+        background: $color_corporativo_dark;
+        display: block;
+        
+        &:hover{
+          background: $color_corporativo_darker;
+          cursor: pointer;  
+        }
+    }
+
+    h4{
+        margin: 0;
+        font-size: $fontRegular;
+        font-weight: normal;
+        text-transform: uppercase;
+        padding: 1em;
+        background: $gris_lighter;
+        color: $color_corporativo_dark;
+    }
+}

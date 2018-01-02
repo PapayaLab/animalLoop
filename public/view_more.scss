@@ -1,0 +1,13 @@
+.module_view_more{
+	text-align: center;
+	button{
+		@include reset-appearance;
+        background: $color_corporativo_regular;
+        color: $blanco;
+        padding: .5em 1em ;
+        @include active-state{
+            background: $color_corporativo_light;
+            cursor: pointer;
+        } 
+	}
+}

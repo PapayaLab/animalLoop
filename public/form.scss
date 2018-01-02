@@ -1,0 +1,186 @@
+.module_form{
+    display: flex;
+    padding: .5em 0;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 1em;
+    width: calc(100% - 2em); 
+    background: $gris_lighter;
+    + .module_form{
+        margin-top: 1em;
+    }
+    &.button{
+        margin-top: 0;
+        &.top{
+            margin-top: 1em;
+        }
+    }
+    input,label,select{
+        display: block;
+       @include reset-appearance;
+    }
+    label{
+        margin-bottom: .3em;
+        color: $color_corporativo_dark;
+    }
+    select{
+        position:relative;
+        background-image: url(./image/down-arrow.png);
+        background-repeat: no-repeat;
+        background-size: 15px 15px;
+        background-position: 98% center;
+    }
+    input[type="text"],select, input[type="number"]{
+        border:solid 1px $gris;
+        padding: .5em .3em;
+        width: 100%;
+        background-color: $blanco;
+        &.module_form_date{
+            //background-image: url(./image/calendar.png);
+            background-image: url(./../public/image/calendar.png);
+            background-repeat: no-repeat;
+            background-size: 15px 15px;
+            background-position: 98% center;
+        }
+        &:required{
+            border:solid 1px $gris; 
+            box-shadow:none;
+        }
+        &:invalid{
+            border:solid 1px $gris;
+            box-shadow:none; 
+        } 
+        @include active-state{
+            border: solid 1px $ok;
+        }   
+    }
+    input[type="checkbox"]:checked{
+        + .checkbox{
+            width: 28px;
+            height: 28px;
+            border: solid 1px $ok;
+            &:before{
+                content: "\f00c";
+                font-family: FontAwesome;
+                color: $ok;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 5px;
+                left: 5px;
+            }
+        }
+    }
+    input[type="checkbox"]{
+        display: none;
+        + .checkbox{
+            position: relative;
+            background: $blanco;
+            width: 28px;
+            height: 28px;
+            border: solid 1px $gris;
+        }
+    }
+
+    input[type="radio"]:checked{
+        + .radio{
+            width: 28px;
+            height: 28px;
+            border: solid 1px $ok;
+            &:before{
+                content: "\f00c";
+                font-family: FontAwesome;
+                color: $ok;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 5px;
+                left: 5px;
+            }
+        }
+    }
+    input[type="radio"]{
+        display: none;
+        + .radio{
+            background: $blanco;
+            position: relative;
+            width: 28px;
+            border-radius: 50%;
+            height: 28px;
+            border: solid 1px $gris;
+        }
+    }
+
+    .item_form{
+        padding: .5em 1em;
+        width: 33.33%;
+        position: relative;
+        &.title{
+            width: 100%;
+            padding: 1em 1em;
+            h4{
+                margin: 0;
+                font-size: $fontRegular;
+                color: $color_corporativo_dark;
+                text-transform: uppercase;
+                border-bottom: solid 1px $color_corporativo_dark;
+                padding: 0 0 1em 0;
+            }
+        }
+
+        &.button{
+            width: 100%;
+            padding: 1em 1em;
+            input[type="submit"],input[type="button"]{
+                width: 200px;
+                color: $blanco;
+                float: right;
+                display: block;
+                padding: 1em;
+                background: $color_secundario_regular;
+                @include active-state{
+                    cursor: pointer;
+                    background: $color_secundario_light;
+                }
+                &:disabled{
+                    background: $gris_dark;
+                }
+            }
+        }
+
+        &.opc{
+            .cr_title{
+                margin-top: .3em;
+                margin-bottom: .1em;
+            }
+            .name_check,.name_radio{
+                margin-top: .8em;
+                float: left;
+                margin-right: 10px;
+            }
+            .checkbox,.radio{
+                margin-top: .3em;
+                float: left;
+                margin-right: 20px;
+            }
+        }
+        &.sem_ext{
+            width: 66.66%;
+            @include vertical-tablet-down {
+                width: 50%;
+            }
+            @include phablet-down {
+                width: 100%;
+            }
+        }
+        &.ext{
+            width: 100%;
+        }
+        @include vertical-tablet-down {
+            width: 50%;
+        }
+        @include phablet-down {
+            width: 100%;
+        }
+    }
+}

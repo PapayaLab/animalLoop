@@ -1,0 +1,31 @@
+.module_summary{
+	display: flex;
+	width: calc(100% - 1em);
+	align-items: center;
+	flex-wrap: wrap;
+	margin: auto;
+	border:1px solid rgba(34,36,38,.15);
+	.module_summary_item1{
+		text-align: center;
+		width: 200px;
+		h3{
+			text-transform: uppercase;
+			color:$color_corporativo_regular;
+		}
+		img{
+			max-width: 150px;
+		}
+		@include phablet-down{
+        	width: 100%;
+   		}
+	}
+	.module_summary_item2{
+		width: calc(100% - 200px);
+		@include phablet-down{
+        	width: 100%;
+   		}
+	}
+	+ .module_summary{
+		margin-top: 1em;
+	}
+}

@@ -1,0 +1,210 @@
+@mixin tableIcon($background,$color){
+    thead{th{background:$background;color:$color;}}
+} 
+
+.module_table_new{
+    margin: 1em auto 1em auto;
+    overflow: auto; 
+    border-radius: 10px;
+    width: calc(100% - 1em);
+    table{
+        border-radius: 10px;
+        border-collapse: separate;
+        width: 100%;
+        min-width: 100%;
+        border-spacing:0;
+        border:1px solid rgba(34,36,38,.15);
+        font-size: $fontTiny;
+        &.table_normal{@include tableIcon($color_planificacion,$blanco);}
+        &.table_summary{@include tableIcon($color_dam,$blanco);}
+        thead{
+            border-radius: 10px 10px 0 0;
+            th{
+                background-color: rgb(249, 250, 251);
+                &:first-child{
+                   border-radius: 10px 0 0 0;
+                }
+                &:last-child{
+                    border-radius: 0 10px 0 0;
+                }
+            }
+        }
+        tbody{
+            
+            tr{
+                &:nth-child(odd){
+                    td{background: rgb(244, 246, 247);}
+                    th{background-color: $color_planificacion;color: $blanco;text-align:right;}
+                }
+                &:nth-child(even){
+                    td{background: rgb(255, 255, 255);}
+                    th{background-color: lighten($color_planificacion, 5%);color: $blanco;text-align:right;}
+                }
+                &.module_table_error{
+                    background: #fff6f6;
+                    color : #9f3a38;
+                }
+                &.module_table_ok{
+                    background: #fcfff5;
+                    color : #2c662d;
+                }
+                &:last-child{
+                    td{
+                        &:first-child{
+                           border-radius: 0 0 0 10px;
+                        }
+                        &:last-child{
+                            border-radius: 0 0 10px 0;
+                        }
+                    }
+                }
+            }
+            &.td25pc{td,th{width:25%;}}
+        }
+        td, th{
+            padding: 10px 7px;
+            position: relative;
+            &.module_table_nr{
+                white-space: nowrap;
+            }
+            &.module_table_right{
+                text-align: right;
+            }
+            &.module_table_center{
+                text-align: center;
+            }
+            &.module_table_error{
+                background: #FA5858;
+                color : #fff;
+            }
+            &.module_table_ok{
+                background: #58ACFA;
+                color : #fff;
+            }
+            a{
+                text-decoration: none;
+                padding: 0 3px;
+            }
+            select{
+                @include reset-appearance;
+                position:relative;
+                padding: 3px;
+                width: 100%;
+                border:solid 1px $gris;
+                background-image: url(./image/down-arrow.png);
+                background-repeat: no-repeat;
+                background-size: 12px 12px;
+                background-position: 98% center;
+            }
+            input{
+                @include reset-appearance;
+                width: 100%;
+                border:solid 1px $gris;
+                padding: 2px;
+                &.module_table_date{
+                    background-image: url(./image/calendar.svg);
+                    background-repeat: no-repeat;
+                    background-size: 10px 10px;
+                    background-position: 98% center;
+                }
+            }
+            input[type="checkbox"]:checked{
+                + .checkbox{
+                    width: 28px;
+                    height: 28px;
+                    border: solid 1px $ok;
+                    &:before{
+                        content: "\f00c";
+                        font-family: FontAwesome;
+                        color: $ok;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 2px;
+                        left: 7px;
+                    }
+                }
+            }
+            input[type="checkbox"]{
+                display: none;
+                + .checkbox{
+                    position: relative;
+                    background: $blanco;
+                    width: 28px;
+                    height: 28px;
+                    border: solid 1px $gris;
+                }
+            }
+            .module_table_opc{
+                .module_table_cr_title{
+                    margin-top: .3em;
+                    margin-bottom: .1em;
+                }
+                .module_table_name_check,.module_table_name_radio{
+                    margin-top: .8em;
+                    float: left;
+                    margin-right: 10px;
+                }
+                .module_table_checkbox,.module_table_radio{
+                    margin-top: .3em;
+                    float: left;
+                    margin-right: 20px;
+                }
+            }
+        }
+        tr{
+            td{
+                border-top:1px solid rgba(34,36,38,.15);
+                + td{  
+                    border-left:1px solid rgba(34,36,38,.15);
+                }
+            }
+            th{
+                + th{
+                    border-left:1px solid rgba(34,36,38,.15);
+        
+                }
+            }
+            td,th{
+                &.td25pc{width:25%;}
+                &.td50{min-width:50px;}
+                &.td200{min-width:200px;}
+                &.td300{min-width:300px;}
+            }
+            &.row_no_border{
+                td,th{
+                    border: none;
+                }
+            }
+        }
+    }
+}
+
+.module_add_row{
+    text-align: right;
+    margin: 1em auto 1em auto;
+    overflow: auto; 
+    width: calc(100% - 1em);
+    label{
+        margin: 0 1em;
+    }
+    input{
+        @include reset-appearance;
+        width: 50px;
+        border:solid 1px $gris;
+        padding: 2px;
+        margin: 0 1em;
+    }
+    button{
+        @include reset-appearance;
+        background: $color_corporativo_regular;
+        color: $blanco;
+        padding: .2em .4em;
+        border-radius: 5px;
+        @include active-state{
+            background: $color_corporativo_light;
+            cursor: pointer;
+        } 
+    }
+
+}

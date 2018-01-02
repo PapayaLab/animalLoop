@@ -1,0 +1,17 @@
+@import './main';
+
+.main{
+	padding-top: 75px;
+	width: calc(100% - 245px);
+	@include vertical-tablet-down {
+		padding-top: 0;
+        width: 100%;
+    }
+}
+
+@import './title';
+@import './filter';
+@import './form';
+@import './table';
+@import './view_more';
+@import './summary';

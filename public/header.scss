@@ -1,0 +1,158 @@
+@import './main';
+
+.header{
+	position: fixed;
+	z-index: 2;
+	top:0;
+	background: $blanco;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	flex-wrap: wrap;
+	box-shadow: 0px 6px 5px -4px rgba(0,0,0,0.75);
+	a{
+		color: $color_corporativo_regular;
+		@include active-state {
+        	text-decoration: none;
+        	color: $color_corporativo_light;
+    	}
+	}
+	.logo{
+		width: 120px;
+		padding: .5em 1em;
+		img{
+			width: 100%;
+		}
+		@include vertical-tablet-down {
+            order: 1;
+        }
+        @include phablet-down{
+        	width: 100px;
+        }
+	}
+	.bars{
+		width: 100px;
+		padding-left: 1em;
+		@include vertical-tablet-down {
+            order: 2;
+            width: 50px;
+        }
+	}
+	.search{
+		width: 300px;
+		position: relative;
+		text-align: center;
+		input{
+			@include reset-appearance;
+			padding: .5em 1em;
+			width: 250px;
+			border: solid $gris 1px;
+		}
+		&:after {
+	        content: "\f002";
+	        font-family: FontAwesome;
+	        font-weight: normal;
+	        position: absolute;
+	        right: 31px;
+	        top: 5px;
+	        color: $color_corporativo_light;
+        }
+        @include tablet-only{
+			width: 200px;
+			input{
+				width: 150px;
+			}
+		}
+        @include vertical-tablet-down {
+            order: 5;
+            display: none;        
+        }
+	}
+	.icons{
+		width: calc(100% - 800px);
+		ul{
+			list-style-type: none;
+			text-align: right;
+			margin: 0;
+			padding: 0;
+			li{	
+				margin: .5em .8em ;
+				display: inline-block;
+				position: relative;
+				a{
+					font-size: $fontRegularBig;
+					display: block;
+					text-decoration: none;
+					span{
+						padding:2px 4px;
+						border-radius: 5px;
+						line-height: 130%;
+						left: 10px;
+						top: -16px;
+						position: absolute;
+						background: $error;
+						font-size: $fontTiny;
+						color: $blanco;
+					}
+				}
+			}
+		}
+		@include tablet-only{
+			width: calc(100% - 700px);
+		}
+		@include vertical-tablet-down {
+            order: 3;
+            width: calc(100% - 450px);
+        }
+        @include phablet-down{
+			width: calc(100% - 220px);
+			ul{
+				li{
+					margin: .5em 16px .5em 0;
+				}
+			}
+		}
+	}
+	.user{
+		width: 280px;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		a{
+			text-decoration: none;
+			@include active-state {
+				text-decoration: underline;
+				color: $color_corporativo_regular;
+			}
+		}
+		.user_text{
+			width: 210px;
+			h2,i{
+				display: inline-block;
+			}
+			h2{	
+				margin: 0;
+				padding: 0;
+				font-size: $fontSmall;
+				color: $color_corporativo_regular;
+			}
+		}
+		.user_img{
+			width: 70px;
+			padding: 1em;
+			img{
+				width: 100%;
+				border-radius: 50%;
+			}
+		}
+		@include phablet-down{
+			width: 70px;
+			.user_text{
+				display: none;
+			}
+		}
+		@include vertical-tablet-down {
+            order: 4;
+        }
+	}
+}

@@ -1,0 +1,191 @@
+@import './main';
+
+
+/* Mixin */
+
+@mixin status($color){
+	&:before {
+		content: "\f111";
+		margin-right: .5em;
+		font-family: FontAwesome;
+		font-weight: normal;
+		color: $color;
+	}
+}
+@mixin icons($icon, $color){
+	&:before {
+		content: $icon;
+		margin-right: .5em;
+		font-family: FontAwesome;
+		font-weight: normal;
+		color: $color;
+		width: 16px;
+		display: inline-block;
+	}
+}
+@mixin arrow($icon){
+	&:after {
+		content: $icon;
+		margin-left: .5em;
+		font-family: FontAwesome;
+		font-weight: normal;
+	}
+}
+@mixin arrowSub($icon){
+	&:before{
+		content: $icon;
+		margin-right: .5em;
+		font-family: FontAwesome;
+		font-weight: normal;
+	}
+}
+
+.nav{
+	padding-top: 75px;
+	width: 245px;
+	min-height: 100vh;
+	background: $color_corporativo_regular;
+	position: relative;
+	z-index: 1;
+	@include vertical-tablet-down {
+        width: 100%;
+        min-height: 0;
+        padding-bottom: 1em;
+    }
+	.nav_user{
+		display: flex;
+		align-items: center;
+		padding: 1em;
+		background-color:rgba(0,0,0,0.2);
+		cursor: pointer;
+		&:before {
+			content: "\f13a";
+			color: $blanco;
+			position: absolute;
+			margin-right: .5em;
+			font-family: FontAwesome;
+			font-weight: normal;
+			right: 0;
+			top: 25px;
+			z-index: 1;
+			top: 98px;
+		}
+		@include active-state {
+        	background-color:rgba(0,0,0,0.4);
+    	}
+		.nav_user_img{
+			width: 20%;
+			img{
+				width: 100%;
+				border-radius: 50%;
+			}
+		}
+		.nav_user_text{
+			width: 70%;
+			ul{
+				padding: 0;
+				margin: 0;
+				list-style-type: none;
+				li{
+					padding: 0 0 0 1em;
+					h2{
+						margin:0;
+						padding: 0;
+						color: $blanco;
+						font-weight: normal;
+						font-size: $fontTiny;
+					}
+					p{
+						line-height: 90%;
+						margin:0;
+						padding: 0;
+						color: $blanco;
+						font-weight: normal;
+						font-size: $fontMini;
+						&.nav_user_online{
+							@include status($ok);
+						}
+						&.nav_user_offline{
+							@include status($error);
+						}
+						&.nav_user_discontinued{
+							@include status($midle);
+						}
+					}
+					+ li{
+						margin-top: .5em;
+					}
+				}
+			}
+		}
+		@include vertical-tablet-down {
+            display: none;
+            &:before {
+				content: none;
+			}
+        }
+	}
+	.nav_items{
+		ul{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			li{
+				display: block;
+				p{
+					margin:0;
+					padding: .3em .5em;
+					color: $blanco;
+					@include active-state {
+						cursor: pointer;
+        				background: $color_corporativo_light;
+    				}
+    				@include arrow("\f107");
+    				&.icon_comercial{@include icons("\f0b1", $color_comercial);}
+    				&.icon_dam{@include icons("\f040", $color_dam);}
+    				&.icon_pruduccion{@include icons("\f1b2", $color_produccion);}
+    				&.icon_sillas{@include icons("\f188", $color_sillas);}
+    				&.icon_planificacion{@include icons("\f0eb", $color_planificacion);}
+    				&.icon_despacho{@include icons("\f0d1", $color_despacho);}
+    				&.icon_instalacion{@include icons("\f1ae", $color_instalaciones);}
+				}
+				&.nav_items_active{
+					p{
+    					@include arrow("\f106");
+    				}
+    				> ul{
+    					display: block;
+    				}
+    			}
+				> ul{
+					display: none;
+					li{
+						padding: 2px 0;
+						span{
+							font-size: $fontTiny;
+							margin:0;
+							padding-left: 33px;
+							color: $blanco;
+							line-height: 100%;
+							@include arrowSub("\f005");
+						}
+						a{
+							color: $midle;
+							text-decoration: none;
+							font-size: $fontMini;
+							display: block;
+							width: 100%;
+							padding-left: 33px;
+							@include arrowSub("\f101");
+							@include active-state {
+								cursor: pointer;
+        						background: $color_corporativo_light;
+    						}
+						}
+					}
+				}
+			}
+			
+		}
+	}
+}
